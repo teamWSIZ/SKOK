@@ -184,4 +184,50 @@ public class Controller {
         komboKlientow.getItems().addAll(klients);
         komboKlientow.setValue(klients.get(0));
     }
+
+    public void addClientDialog() {
+        Dialog<String> dialog = new Dialog<>();
+        //title...
+        dialog.setTitle("Add client");
+        dialog.setHeaderText("Add new client to the bank");
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        TextField userField = new TextField();
+        userField.setPromptText("Name");
+        TextField peselField = new TextField();
+        peselField.setPromptText("Pesel");
+        TextField adresField = new TextField();
+        adresField.setPromptText("Address");
+
+        grid.add(new Label("Name:"), 0, 0);
+        grid.add(userField, 1, 0);
+        grid.add(new Label("Pesel:"), 0, 1);
+        grid.add(peselField, 1, 1);
+        grid.add(new Label("Address:"), 0, 2);
+        grid.add(adresField, 1, 2);
+
+        dialog.getDialogPane().setContent(grid);
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == ButtonType.OK) {
+                return userField.getText();
+            } else if (dialogButton==ButtonType.CANCEL) {
+                System.out.println("Cancel button clicked");
+            }
+            return null;
+        });
+
+
+        dialog.getDialogPane().setContent(grid);
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            System.out.println(result.get());
+            bank.addClient(result.get());
+        }
+    }
 }

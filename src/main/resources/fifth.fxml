@@ -60,6 +60,7 @@
                 <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#alertujUsera" text="Pokaż alert" BorderPane.alignment="CENTER" />
                 <Label onMouseClicked="#alertujUsera"> (na Label) pokaż alert</Label>
                 <ComboBox style="-fx-pref-width: 200" fx:id="komboKlientow"/>
+                <Button style="-fx-pref-width: 200" onAction="#addClientDialog" text="Add client"/>
                 <Button style="-fx-pref-width: 200" onAction="#refresh" text="Refresh Data"/>
             </VBox>
         </right>
