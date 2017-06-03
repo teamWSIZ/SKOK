@@ -1,19 +1,31 @@
-package bank.model;
+package bank.service;
+
+import bank.model.Klient;
+import bank.model.Konto;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
+    private AuthService authService;
+
     private List<Klient> klienci;
     private List<Konto> konta;
     int nastepnyNrKonta;
     int nastepnyNrKlienta;
 
-    public Bank() {
+    public Bank(AuthService authService) {
         klienci = new ArrayList<>();
         konta = new ArrayList<>();
         nastepnyNrKonta = 1;
         nastepnyNrKlienta = 1;
+        this.authService = authService;
+    }
+
+    public void init() {
+        addClient("Abu Mazen");
+        addClient("Xi Wuhao");
+        addClient("Francesco Bueno");
     }
 
     //Dodawanie klientów; uwaga: id klienta musi być unikalne i ustawione!

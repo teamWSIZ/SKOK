@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <VBox id="vbox" prefHeight="400" prefWidth="1200" xmlns="http://javafx.com/javafx/8.0.112"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller">
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="bank.ui.Controller">
     <MenuBar fx:id="menuBar" onKeyPressed="#sayIt">
         <menus>
             <Menu text="File">
@@ -55,6 +55,7 @@
                 <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#loginDialog" text="Log In" BorderPane.alignment="CENTER" />
                 <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#zmienNaDuze" text="Zamień na duże litery" BorderPane.alignment="CENTER" />
                 <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#drawOnCanvas" text="Rysuj na canvas" BorderPane.alignment="CENTER" />
+                <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#sayIt" text="Test banku" BorderPane.alignment="CENTER" />
                 <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#disableToolsMenu" text="Wyłącz 'Tools'" BorderPane.alignment="CENTER" />
                 <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#alertujUsera" text="Pokaż alert" BorderPane.alignment="CENTER" />
                 <Label onMouseClicked="#alertujUsera"> (na Label) pokaż alert</Label>

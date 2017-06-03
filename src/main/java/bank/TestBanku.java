@@ -1,8 +1,9 @@
 package bank;
 
-import bank.model.Bank;
+import bank.service.Bank;
 import bank.model.Klient;
 import bank.model.Konto;
+import bank.service.Context;
 
 public class TestBanku {
     public static void main(String[] args) {
@@ -26,7 +27,7 @@ public class TestBanku {
         System.out.println(konto2);
 
         //dodawanie kont dla klientów
-        Bank bank = new Bank();
+        Bank bank = Context.getBank();
         bank.addClient(klient1);
         bank.addClient(klient2);
 

@@ -1,4 +1,4 @@
-package GUI;
+package bank.ui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

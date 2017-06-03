@@ -1,5 +1,7 @@
-package GUI;
+package bank.ui;
 
+import bank.service.Bank;
+import bank.service.Context;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -17,6 +19,8 @@ import java.io.File;
 import java.util.Optional;
 
 public class Controller {
+    Bank bank;
+
     @FXML
     TextArea oknoTekstowe;
 
@@ -29,8 +33,13 @@ public class Controller {
     @FXML
     Stage stage;
 
+
+    public Controller() {
+        this.bank = Context.getBank();
+    }
+
     public void sayIt() {
-        System.out.println("It");
+        oknoTekstowe.setText(bank.getKlienci().toString());
     }
 
     public void zmienNaDuze() {
