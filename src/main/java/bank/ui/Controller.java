@@ -1,8 +1,10 @@
 package bank.ui;
 
+import bank.model.Klient;
 import bank.service.Bank;
 import bank.service.Context;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
@@ -16,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.io.File;
+import java.util.List;
 import java.util.Optional;
 
 public class Controller {
@@ -33,6 +36,8 @@ public class Controller {
     @FXML
     Stage stage;
 
+    @FXML
+    ComboBox<Klient> komboKlientow;
 
     public Controller() {
         this.bank = Context.getBank();
@@ -172,5 +177,11 @@ public class Controller {
         //todo: "new game dialog" or "num keyboard dialog"
         //todo: akcje pod klawiszami
 
+    }
+
+    public void refresh() {
+        List<Klient> klients = bank.getKlienci();
+        komboKlientow.getItems().addAll(klients);
+        komboKlientow.setValue(klients.get(0));
     }
 }
