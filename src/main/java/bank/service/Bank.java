@@ -52,8 +52,6 @@ public class Bank {
         return nowy;
     }
 
-
-
     public void createAccoutForClient(int idklienta) {
         Konto k = new Konto();
         k.setIdklienta(idklienta);

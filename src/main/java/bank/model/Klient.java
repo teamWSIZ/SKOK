@@ -6,4 +6,10 @@ import lombok.Data;
 public class Klient {
     int id;
     String nazwisko;
+
+//    @Override
+//    public String toString() {
+//        return nazwisko + "(" + id + ")";
+//    }
+
 }

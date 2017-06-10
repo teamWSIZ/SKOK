@@ -16,8 +16,10 @@ import javafx.scene.shape.ArcType;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+import javafx.util.StringConverter;
 
 import java.io.File;
+import java.text.Format;
 import java.util.List;
 import java.util.Optional;
 
@@ -181,6 +183,19 @@ public class Controller {
 
     public void refresh() {
         List<Klient> klients = bank.getKlienci();
+        komboKlientow.setConverter(new StringConverter<Klient>() {
+            @Override
+            public String toString(Klient k) {
+                String res = String.format("%-20s (Id:%-3d)", k.getNazwisko(), k.getId());
+                return res;
+            }
+
+            @Override
+            public Klient fromString(String string) {
+                return null;
+            }
+        });
+        komboKlientow.getItems().clear();
         komboKlientow.getItems().addAll(klients);
         komboKlientow.setValue(klients.get(0));
     }
