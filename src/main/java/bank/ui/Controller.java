@@ -48,7 +48,7 @@ public class Controller {
     }
 
     public void testBanku() {
-        oknoTekstowe.setText(bank.getKlienci().toString());
+        oknoTekstowe.setText(bank.toString());
     }
 
     public void zmienNaDuze() {

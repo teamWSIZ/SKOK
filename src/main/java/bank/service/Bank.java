@@ -11,21 +11,31 @@ public class Bank {
 
     private List<Klient> klienci;
     private List<Konto> konta;
-    int nastepnyNrKonta;
-    int nastepnyNrKlienta;
+    int generatorNrKonta;    //licznik kont (tworzy idkont)
+    int generatorNrKlienta;  //licznik klientów
 
     public Bank(AuthService authService) {
         klienci = new ArrayList<>();
         konta = new ArrayList<>();
-        nastepnyNrKonta = 1;
-        nastepnyNrKlienta = 1;
+        generatorNrKonta = 1;
+        generatorNrKlienta = 1;
         this.authService = authService;
     }
 
+    //Funkcja do testów banku; tworzy przykładowych klientów i konta
     public void init() {
         addClient("Abu Mazen");
         addClient("Xi Wuhao");
         addClient("Francesco Bueno");
+        createAccoutForClient(1);
+        createAccoutForClient(2);
+        createAccoutForClient(3);
+        createAccoutForClient(3);
+
+        for(Konto k : konta) {
+            depositFunds(k.getIdkonta(), 10);
+        }
+
     }
 
     //Dodawanie klientów; uwaga: id klienta musi być unikalne i ustawione!
@@ -45,19 +55,20 @@ public class Bank {
 
     public Klient addClient(String nazwaKlienta) {
         Klient nowy = new Klient();
-        nowy.setId(nastepnyNrKlienta);
-        nastepnyNrKlienta++;
+        nowy.setId(generatorNrKlienta);
+        generatorNrKlienta++;
         nowy.setNazwisko(nazwaKlienta);
         klienci.add(nowy);
         return nowy;
     }
 
+    //Tworzy nowe konto związane z klientem o podanym id
     public void createAccoutForClient(int idklienta) {
         Konto k = new Konto();
         k.setIdklienta(idklienta);
         k.setStankonta(0);
-        k.setIdkonta(nastepnyNrKonta);
-        nastepnyNrKonta++;
+        k.setIdkonta(generatorNrKonta);
+        generatorNrKonta++;
         konta.add(k);
     }
 
@@ -71,6 +82,7 @@ public class Bank {
         return wynik;
     }
 
+    //Dodaje fundusze `funds` do konta o podanym id
     public void depositFunds(int idkonta, int funds) {
         // 1) funds > 0
         // 2) musi istniec konto o idkonta
@@ -106,5 +118,19 @@ public class Bank {
 
     public List<Konto> getKonta() {
         return konta;
+    }
+
+    @Override
+    public String toString() {
+        String res = "----------------------------------";
+        for(Klient k : klienci) {
+            res += "\n" + k.toString();
+        }
+        res += "\n----------------------------------";
+        for(Konto k : konta) {
+            res += "\n" + k.toString();
+        }
+        res += "\n----------------------------------";
+        return res;
     }
 }

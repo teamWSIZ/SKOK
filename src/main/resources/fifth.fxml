@@ -66,10 +66,10 @@
             </VBox>
         </right>
         <center>
-            <Canvas fx:id="mycanvas" height="400" width="400" />
+            <Canvas fx:id="mycanvas" height="400" width="200" />
         </center>
         <left>
-            <TextArea fx:id="oknoTekstowe" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <TextArea fx:id="oknoTekstowe" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
         </left>
         <bottom>
         </bottom>
