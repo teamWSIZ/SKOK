@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <VBox id="vbox" prefHeight="400" prefWidth="1200" xmlns="http://javafx.com/javafx/8.0.112"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="bank.ui.Controller">
-    <MenuBar fx:id="menuBar" onKeyPressed="#sayIt">
+    <MenuBar fx:id="menuBar" onKeyPressed="#testBanku">
         <menus>
             <Menu text="File">
                 <items>
@@ -44,7 +44,7 @@
                     <MenuItem disable="true" text="Search" />
                     <MenuItem text="Online Manual" visible="false" />
                     <SeparatorMenuItem />
-                    <MenuItem onAction="#sayIt" text="About" />
+                    <MenuItem onAction="#testBanku" text="About" />
                 </items>
             </Menu>
         </menus>
@@ -54,13 +54,14 @@
             <VBox alignment="TOP_CENTER" style="-fx-border-style: solid;-fx-border-radius: 5">
                 <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#loginDialog" text="Log In" BorderPane.alignment="CENTER" />
                 <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#zmienNaDuze" text="Zamień na duże litery" BorderPane.alignment="CENTER" />
-                <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#drawOnCanvas" text="Rysuj na canvas" BorderPane.alignment="CENTER" />
-                <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#sayIt" text="Test banku" BorderPane.alignment="CENTER" />
-                <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#disableToolsMenu" text="Wyłącz 'Tools'" BorderPane.alignment="CENTER" />
-                <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#alertujUsera" text="Pokaż alert" BorderPane.alignment="CENTER" />
-                <Label onMouseClicked="#alertujUsera"> (na Label) pokaż alert</Label>
+                <Button style="-fx-pref-width: 200" mnemonicParsing="false" onAction="#testBanku" text="Test banku" BorderPane.alignment="CENTER" />
+                <Label> Klienci: </Label>
                 <ComboBox style="-fx-pref-width: 200" fx:id="komboKlientow"/>
                 <Button style="-fx-pref-width: 200" onAction="#addClientDialog" text="Add client"/>
+                <Label> Konta: </Label>
+                <ComboBox style="-fx-pref-width: 200" fx:id="komboKont"/>
+                <Button style="-fx-pref-width: 200" onAction="#addAccountDialog" text="Add account"/>
+
                 <Button style="-fx-pref-width: 200" onAction="#refresh" text="Refresh Data"/>
             </VBox>
         </right>

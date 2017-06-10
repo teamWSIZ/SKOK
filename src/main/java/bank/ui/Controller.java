@@ -1,6 +1,7 @@
 package bank.ui;
 
 import bank.model.Klient;
+import bank.model.Konto;
 import bank.service.Bank;
 import bank.service.Context;
 import javafx.application.Platform;
@@ -20,6 +21,7 @@ import javafx.util.StringConverter;
 
 import java.io.File;
 import java.text.Format;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,7 +47,7 @@ public class Controller {
         this.bank = Context.getBank();
     }
 
-    public void sayIt() {
+    public void testBanku() {
         oknoTekstowe.setText(bank.getKlienci().toString());
     }
 
@@ -182,7 +184,9 @@ public class Controller {
     }
 
     public void refresh() {
+        //Odświeżanie GUI z klientami
         List<Klient> klients = bank.getKlienci();
+        Collections.sort(klients);
         komboKlientow.setConverter(new StringConverter<Klient>() {
             @Override
             public String toString(Klient k) {
@@ -198,6 +202,17 @@ public class Controller {
         komboKlientow.getItems().clear();
         komboKlientow.getItems().addAll(klients);
         komboKlientow.setValue(klients.get(0));
+
+        //Odświeżanie GUI z kontami
+        Klient selected = komboKlientow.getSelectionModel().getSelectedItem();
+        if (selected!=null) {
+            int idKlienta = selected.getId();
+            List<Konto> konta = bank.getAccountsForClient(idKlienta);
+            //zrobić jak powyżej (tzn. przeformatować odpowiednio string konta do combo)
+            //wybrać konto(0), jeśli istnieje
+        }
+
+
     }
 
     public void addClientDialog() {
@@ -244,5 +259,54 @@ public class Controller {
             System.out.println(result.get());
             bank.addClient(result.get());
         }
+        this.refresh();
+    }
+
+
+    public void addAccountDialog() {
+        Dialog<String> dialog = new Dialog<>();
+        //title...
+        dialog.setTitle("Add client");
+        dialog.setHeaderText("Add new client to the bank");
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        TextField userField = new TextField();
+        userField.setPromptText("Name");
+        TextField peselField = new TextField();
+        peselField.setPromptText("Pesel");
+        TextField adresField = new TextField();
+        adresField.setPromptText("Address");
+
+        grid.add(new Label("Name:"), 0, 0);
+        grid.add(userField, 1, 0);
+        grid.add(new Label("Pesel:"), 0, 1);
+        grid.add(peselField, 1, 1);
+        grid.add(new Label("Address:"), 0, 2);
+        grid.add(adresField, 1, 2);
+
+        dialog.getDialogPane().setContent(grid);
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == ButtonType.OK) {
+                return userField.getText();
+            } else if (dialogButton==ButtonType.CANCEL) {
+                System.out.println("Cancel button clicked");
+            }
+            return null;
+        });
+
+
+        dialog.getDialogPane().setContent(grid);
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            System.out.println(result.get());
+            bank.addClient(result.get());
+        }
+        this.refresh();
     }
 }
