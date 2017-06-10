@@ -120,6 +120,27 @@ public class Bank {
         return konta;
     }
 
+    public void removeAccount(int kontoid) {
+        Konto toRemove = null;
+        for(Konto k : konta) {
+            if (k.getIdkonta()==kontoid) toRemove = k;
+        }
+        konta.remove(toRemove);
+    }
+
+    public void removeClient(int klientId) {
+        Klient toRemove = null;
+        for(Klient k : klienci) {
+            if (k.getId()==klientId) {
+                toRemove = k;
+                for(Konto kk : konta) {
+                    if (kk.getIdklienta()==klientId) removeAccount(kk.getIdkonta());
+                }
+            }
+        }
+        klienci.remove(toRemove);
+    }
+
     @Override
     public String toString() {
         String res = "----------------------------------";
