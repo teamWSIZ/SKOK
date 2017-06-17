@@ -30,4 +30,13 @@ public class AServiceTest {
         assertThat(testee.findIndex(a, -20)).isEqualTo(0);
         assertThat(testee.findIndex(a, 0)).isEqualTo(0);
     }
+
+    @Test
+    public void oneElementArrayTest() {
+        int[] a = new int[]{1};
+
+        assertThat(testee.findIndex(a, 5)).isEqualTo(0);
+        assertThat(testee.findIndex(a, 8)).isEqualTo(0);
+        assertThat(testee.findIndex(a, 20)).isEqualTo(0);
+    }
 }
