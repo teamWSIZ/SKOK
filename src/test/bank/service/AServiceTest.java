@@ -39,4 +39,15 @@ public class AServiceTest {
         assertThat(testee.findIndex(a, 8)).isEqualTo(0);
         assertThat(testee.findIndex(a, 20)).isEqualTo(0);
     }
+
+    //////////////////
+    //window
+    @Test
+    public void simpleWindowTest() {
+        int[] a = new int[]{0, 1, 4, 2, 1, 5};
+
+        assertThat(testee.isWindowOk(a, 2, 6)).isEqualTo(true);
+        assertThat(testee.isWindowOk(a, 3, 6)).isEqualTo(false);
+        assertThat(testee.isWindowOk(a, 3, 8)).isEqualTo(true);
+    }
 }

@@ -8,6 +8,10 @@ public class AService {
         return 0;
     }
 
+    boolean isWindowOk(int[] a, int windowSize, int maxSum) {
+        return true;
+    }
+
     public int add(int a, int b) {
         return a + b;
     }
