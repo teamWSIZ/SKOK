@@ -43,6 +43,18 @@ public class AService {
         return true;
     }
 
+    /*
+     * Spawdza wzajemne położenie dwóch kwadratów; każdy zadany jest przez położenie jego lewego
+     * górnego rogu ( (x,y) dla pierwszego, i (x1,y1) dla drugiego), oraz długość boku, `side`.
+     *
+     * Metoda spradza, czy środki kwadratów są bliżej niż `distance` (wtedy zwraca `true`).
+     *
+     */
+    boolean collidesWith(int x, int y, int x1, int y1, int side, double distance) {
+
+        return true;
+    }
+
     public int add(int a, int b) {
         return a + b;
     }
