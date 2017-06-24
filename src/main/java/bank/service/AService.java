@@ -32,6 +32,14 @@ public class AService {
         //pierwsza po pozycji startowej
             //druga po kolejnych elementach; w czasie drugiej wyliczać ich sume
             //jeśli suma po drugiej pętli jest większa od `maxSum` to zwrócić "false"
+
+        for (int i = 0; i + windowSize - 1 < a.length; i++) {
+            int sum = 0;
+            for (int j = 0; j < windowSize; j++) {
+                sum += a[i + j];
+            }
+            if (sum>maxSum) return false;
+        }
         return true;
     }
 
