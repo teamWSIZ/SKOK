@@ -3,8 +3,12 @@ package bank.service;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
+/**
+ * Przykładowe testy wykorzystujące bibliotekę AssertJ
+ */
+
 
 public class AServiceTest {
     AService testee;
@@ -15,7 +19,7 @@ public class AServiceTest {
         testee = new AService();
     }
 
-    @Test
+    @Test   //przykład testu
     public void aaaTest() {
         assertThat(1).isEqualTo(1);
     }
@@ -60,7 +64,6 @@ public class AServiceTest {
         assertThat(testee.isInsideSquare(0, 10, 10, 5, 5)).isEqualTo(true);
         assertThat(testee.isInsideSquare(0, 10, 10, 10, 0)).isEqualTo(true);
         assertThat(testee.isInsideSquare(0, 10, 10, 100, 100)).isEqualTo(false);
-
 
         assertThat(testee.isInsideSquare(0, 1, 1, 0, 0)).isEqualTo(true);
         assertThat(testee.isInsideSquare(0, 1, 1, 1, 2)).isEqualTo(false);

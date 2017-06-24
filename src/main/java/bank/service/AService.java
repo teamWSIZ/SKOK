@@ -19,7 +19,10 @@ public class AService {
      *
      */
     boolean isInsideSquare(int x, int y, int side, int xx, int yy) {
-        //do napisania
+        if (xx<x) return false;
+        if (xx>x+side) return false;
+        if (yy<y-side) return false;  //poniżej dolnej krawędzi
+        if (yy>y) return false;
         return true;
     }
 
