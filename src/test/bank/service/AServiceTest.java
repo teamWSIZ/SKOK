@@ -80,4 +80,23 @@ public class AServiceTest {
         assertThat(testee.isWindowOk(a, 3, 6)).isEqualTo(false);
         assertThat(testee.isWindowOk(a, 3, 8)).isEqualTo(true);
     }
+
+    @Test
+    public void otherWindowTest() {
+        int[] a = new int[]{0, 1};
+
+        assertThat(testee.isWindowOk(a, 1, 1)).isEqualTo(true);
+        assertThat(testee.isWindowOk(a, 1, 0)).isEqualTo(false);
+        assertThat(testee.isWindowOk(a, 2, 1)).isEqualTo(true);
+        assertThat(testee.isWindowOk(a, 2, 0)).isEqualTo(false);
+    }
+
+    @Test
+    public void sequenceWindowTest() {
+        int[] a = new int[]{0, 1, 2, 3, 4, 5};
+        assertThat(testee.isWindowOk(a, 1, 10)).isEqualTo(true);
+        assertThat(testee.isWindowOk(a, 2, 10)).isEqualTo(true);
+        assertThat(testee.isWindowOk(a, 3, 10)).isEqualTo(false);
+        assertThat(testee.isWindowOk(a, 4, 10)).isEqualTo(false);
+    }
 }

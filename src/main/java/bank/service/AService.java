@@ -28,6 +28,10 @@ public class AService {
 
 
     boolean isWindowOk(int[] a, int windowSize, int maxSum) {
+        //zrobić dwie pętle
+        //pierwsza po pozycji startowej
+            //druga po kolejnych elementach; w czasie drugiej wyliczać ich sume
+            //jeśli suma po drugiej pętli jest większa od `maxSum` to zwrócić "false"
         return true;
     }
 
