@@ -51,8 +51,23 @@ public class AService {
      *
      */
     boolean collidesWith(int x, int y, int x1, int y1, int side, double distance) {
+        double centerX = x + 0.5 * side;
+        double centerY = y - 0.5 * side;
+        double centerX1 = x1 + 0.5 * side;
+        double centerY1 = y1 - 0.5 * side;
 
-        return true;
+        double current = Math.sqrt((centerX - centerX1) * (centerX - centerX1) +
+                (centerY - centerY1) * (centerY - centerY1));
+
+        return (current < distance);
+    }
+
+    /*
+     * Zadane są dwa odczyty stopera, każdy zawiera liczbę minut i liczbę sekund. Obliczyć ile sekund minęło
+     * między obydwoma odczytami.
+     */
+    int differenceInSeconds(int mins1, int sec1, int min2, int sec2) {
+        return 0;
     }
 
     public int add(int a, int b) {

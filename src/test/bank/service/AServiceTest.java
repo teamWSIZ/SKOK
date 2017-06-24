@@ -105,12 +105,16 @@ public class AServiceTest {
 
     @Test
     public void simpleCollisionsTest() {
-
         assertThat(testee.collidesWith(0, 1, 1, 1, 1, 1.01)).isEqualTo(true);
         assertThat(testee.collidesWith(0, 1, 100, 1, 1, 1.01)).isEqualTo(false);
         assertThat(testee.collidesWith(0, 1, 1, 2, 1, 1.4143)).isEqualTo(true); //odległość to dokładnie sqrt(2)=1.41421356
         assertThat(testee.collidesWith(0, 1, 1, 2, 1, 1.4140)).isEqualTo(false);
+    }
 
-
+    @Test
+    public void simpleStoperTest() {
+        assertThat(testee.differenceInSeconds(0, 0, 1, 10)).isEqualTo(70);
+        assertThat(testee.differenceInSeconds(1, 5, 1, 10)).isEqualTo(5);
+        assertThat(testee.differenceInSeconds(10, 0, 5, 0)).isEqualTo(300);
     }
 }
